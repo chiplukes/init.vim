@@ -65,7 +65,7 @@ set showmode
 set splitbelow
 set splitright
 set wrap
-autocmd Rc BufEnter * EnableStripWhitespaceOnSave
+"" autocmd Rc BufEnter * EnableStripWhitespaceOnSave
 
 "" keymaps
 
