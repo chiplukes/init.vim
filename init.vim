@@ -1,3 +1,39 @@
+" Windows stuff
+if (has('win32') || has('win64'))
+
+  let g:python3_host_prog='C:/Python36/python.exe'
+  let g:python_host_prog='C:/Python27/python.exe'
+
+  set nocompatible
+  " source $VIMRUNTIME/vimrc_example.vim " fixme remove?
+  source $VIMRUNTIME/mswin.vim
+  behave mswin
+
+  " Adjustments to $PATH:
+  " Path to Batch tools folder
+  let s:toolsbin = expand('~/.config/tools')
+  " Add tools path to $PATH if running on Windows and tools exists
+  if isdirectory(s:toolsbin)
+	  let $PATH .= ';' . s:toolsbin
+  endif
+
+  " Path to MinGW
+  let s:mingwbin =  'C:\tools\msys64\mingw64\bin'
+  " Add Mingw's path to $PATH if running on Windows and Mingw exists
+  if isdirectory(s:mingwbin)
+	  let $PATH .= ';' . s:mingwbin
+  endif
+
+  " Path to Msys
+  let s:msysbin =  'C:\tools\msys64\usr\bin'
+  " Add Msys path to $PATH if running on Windows and Msys exists
+  if isdirectory(s:msysbin)
+	  let $PATH .= ';' . s:msysbin
+  endif
+
+endif
+
+
 " plugins
 
 call plug#begin()
@@ -14,7 +50,6 @@ Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'cocopon/iceberg.vim'
 
 call plug#end()
-
 
 
 " pure vim
