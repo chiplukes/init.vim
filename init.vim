@@ -137,3 +137,10 @@ highlight Normal      ctermbg=none
 highlight NonText     ctermbg=none
 highlight EndOfBuffer ctermbg=none
 highlight VertSplit   cterm=none ctermfg=240 ctermbg=240
+
+
+
+"" fix for neovim bug where buffers don't show up
+if @% == ""
+  bd
+endif
