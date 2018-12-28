@@ -31,6 +31,10 @@ if (has('win32') || has('win64'))
 	  let $PATH .= ';' . s:msysbin
   endif
 
+else
+  " made a virtual environment per :help provider-python
+  let g:python3_host_prog=expand('~/.pyenv/versions/py3neovim/bin/python')
+
 endif
 
 
@@ -45,8 +49,16 @@ Plug 'junegunn/vim-easy-align'
 Plug 'scrooloose/nerdtree'
 Plug 'mhinz/vim-signify'
 Plug 'davidhalter/jedi-vim', { 'for':  'python' }
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'cocopon/iceberg.vim'
+if has('nvim')
+  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+else
+  Plug 'Shougo/deoplete.nvim'
+  Plug 'roxma/nvim-yarp'
+  Plug 'roxma/vim-hug-neovim-rpc'
+endif
+let g:deoplete#enable_at_startup = 1
+let g:deoplete#_python_version_check = 1
 call plug#end()
 
 
@@ -292,7 +304,6 @@ nnoremap ;aF   :NERDTreeFind<CR
 nmap s <Plug>(easymotion-s2)
 
 "" deoplete
-let g:deoplete#enable_at_startup = 1
 let g:deoplete#auto_complete_start_length = 1
 inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 inoremap <expr><s-tab> pumvisible() ? "\<c-p>" : "\<s-tab>"
