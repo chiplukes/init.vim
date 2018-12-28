@@ -36,8 +36,6 @@ endif
 
 " plugins
 
-g:plug_shallow = 0
-
 call plug#begin()
 Plug 'easymotion/vim-easymotion'
 Plug 'tpope/vim-commentary'
@@ -188,7 +186,7 @@ nnoremap Y y$
 if (has('win32') || has('win64'))
 		nmap <leader>1 :set lines=100 columns=180<CR><C-w>o
 		nmap <leader>2 :set lines=100 columns=360<CR><C-w>v <C-w>=
-elseif
+else
 		map <leader>1 <c-w>o
 		map <leader>2 <c-w>v <C-w>=
 endif
