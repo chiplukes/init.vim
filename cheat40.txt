@@ -1,0 +1,202 @@
+Plugins {{{1
+Easymotion {{{2
+repeat last command      .             N
+}}}
+Commentary{{{2
+repeat last command      .             N
+}}}
+Surround {{{2
+repeat last command      .             N
+}}}
+Nerdtree {{{2
+repeat last command      .             N
+}}}
+Signify {{{2
+repeat last command      .             N
+}}}
+Ale {{{2
+repeat last command      .             N
+}}}
+Deoplete {{{2
+repeat last command      .             N
+}}}
+Fzf {{{2
+repeat last command      .             N
+}}}
+}}}
+
+User {{{1
+Toggle Fold              za            N
+Focus Fold, Close others z-Enter       N
+}}}
+
+#
+#"" keymaps
+#" ---------
+#
+#" Improve scroll, credits: https://github.com/Shougo
+#nnoremap <expr> zz (winline() == (winheight(0)+1) / 2) ?
+#	\ 'zt' : (winline() == 1) ? 'zb' : 'zz'
+#noremap <expr> <C-f> max([winheight(0) - 2, 1])
+#	\ ."\<C-d>".(line('w$') >= line('$') ? "L" : "M")
+#noremap <expr> <C-b> max([winheight(0) - 2, 1])
+#	\ ."\<C-u>".(line('w0') <= 1 ? "H" : "M")
+#noremap <expr> <C-e> (line("w$") >= line('$') ? "j" : "3\<C-e>")
+#noremap <expr> <C-y> (line("w0") <= 1         ? "k" : "3\<C-y>")
+#
+#" Use tab for indenting in visual mode
+#vnoremap <Tab> >gv|
+#vnoremap <S-Tab> <gv
+#nnoremap > >>_
+#nnoremap < <<_
+#
+#" When pressing <leader>cd switch to the directory of the open buffer
+#map <Leader>cd :lcd %:p:h<CR>:pwd<CR>
+#
+#let g:mapleader = "\<space>"
+#
+#nnoremap <expr> j v:count ? 'j' : 'gj'
+#nnoremap <expr> k v:count ? 'k' : 'gk'
+#nnoremap gj j
+#nnoremap gk k
+#nnoremap <esc><esc> :nohlsearch<cr>
+#nnoremap Y y$
+#
+#" handle the following a little different in Windows GUI
+#if (has('win32') || has('win64'))
+#		nmap <leader>1 :set lines=100 columns=180<CR><C-w>o
+#		nmap <leader>2 :set lines=100 columns=360<CR><C-w>v <C-w>=
+#else
+#		map <leader>1 <c-w>o
+#		map <leader>2 <c-w>v <C-w>=
+#endif
+#
+#" bind Ctrl+<movement> keys to move around the windows, instead of using Ctrl+w + <movement>
+#" Every unnecessary keystroke that can be saved is good for your health :)
+#map <c-j> <c-w>j
+#map <c-k> <c-w>k
+#map <c-l> <c-w>l
+#map <c-h> <c-w>h
+#
+#" Manage buffers like tabs
+#" Th" Manage buffers like tabs
+#" This allows buffers to be hidden if you've modified a buffer.
+#" This is almost a must if you wish to use buffers in this way.
+#
+#" This allows buffers to be hidden if you've modified a buffer.
+#" This is almost a must if you wish to use buffers in this way.
+#set hidden
+#" https://joshldavis.com/2014/04/05/vim-tab-madness-buffers-vs-tabs/
+#" To open a new empty buffer
+#" This replaces :tabnew which I used to bind to this mapping
+#nmap <leader>T :enew<cr>
+#
+#" Move to the next buffer
+#nmap <leader>l :bnext<CR>
+#
+#" Move to the previous buffer
+#nmap <leader>h :bprevious<CR>
+#
+#" Close the current buffer and move to the previous one
+#" This replicates the idea of closing a tab
+#nmap <leader>bq :bp <BAR> bd #<CR>
+#
+#" Show all open buffers and their status
+#nmap <leader>bl :ls<CR>
+#
+#
+#" Totally Custom
+#" --------------
+#
+#" Run Vivado Tcl script
+#" http://vim.wikia.com/wiki/Execute_external_programs_asynchronously_under_Windows
+#":nnoremap <Leader>v :!vivado -mode batch -source %:p
+#
+#" Run Picoblaze build batch file
+#"function PythonThis()
+#"    :w
+#"    :python3 import vim
+#"    :python3 import sys
+#"    :python3 b = vim.current.buffer
+#"    :python3 sys.argv = [b.name]
+#"    :py3file $HOME\.config\nvim\tools\python_this.py
+#"endfunction
+#":nnoremap <Leader>pb :exec PythonThis()
+#
+#" Trim whitespace, retab, and set file type to Dos
+#function CleanUp()
+#    :e ++ff=dos
+#    :w
+#    let l:save_cursor = getpos('.')
+#    %s/\s\+$//e
+#    call setpos('.', l:save_cursor)
+#    :retab
+#endfunction
+#command! CleanUp call CleanUp()
+#
+#" ignore whitespace with vim diff
+#set diffopt+=iwhite
+#set diffexpr=DiffW()
+#function DiffW()
+#  let opt = ""
+#   if &diffopt =~ "icase"
+#     let opt = opt . "-i "
+#   endif
+#   if &diffopt =~ "iwhite"
+#     let opt = opt . "-w " " swapped vim's -b with -w
+#   endif
+#   silent execute "!diff -a --binary " . opt .
+#     \ v:fname_in . " " . v:fname_new .  " > " . v:fname_out
+#endfunction
+#
+#
+#" --------------
+#" plugin settings
+#" --------------
+#
+#" Jedi-Vim
+#let g:jedi#popup_on_dot = 0
+#let g:jedi#popup_select_first = 0
+#let g:jedi#completions_enabled = 0
+#let g:jedi#auto_vim_configuration = 0
+#let g:jedi#show_call_signatures = 0
+#if has('python3')
+#    let g:jedi#force_py_version = 3
+#endif
+#
+#"" tree view
+#nnoremap <F2> :NERDTreeToggle<CR>
+#nnoremap ;aF   :NERDTreeFind<CR
+#
+#"" easymotion
+#nmap s <Plug>(easymotion-s2)
+#
+#"" deoplete
+#let g:deoplete#auto_complete_start_length = 1
+#inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
+#inoremap <expr><s-tab> pumvisible() ? "\<c-p>" : "\<s-tab>"
+#
+#" EasyAlign
+#" Start interactive EasyAlign in visual mode (e.g. vipga)
+#xmap ga <Plug>(EasyAlign)
+#" Start interactive EasyAlign for a motion/text object (e.g. gaip)
+#nmap ga <Plug>(EasyAlign)
+#
+#"" lightline
+#let g:lightline = { 'colorscheme': 'iceberg' }
+#
+#"" colorscheme
+#colorscheme iceberg
+#
+#highlight Normal      ctermbg=none
+#highlight NonText     ctermbg=none
+#highlight EndOfBuffer ctermbg=none
+#highlight VertSplit   cterm=none ctermfg=240 ctermbg=240
+#
+#
+#
+#"" fix for neovim bug where buffers don't show up
+#if @% == ""
+#  bd
+#endif
+#
