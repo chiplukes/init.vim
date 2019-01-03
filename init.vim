@@ -90,7 +90,7 @@ set wildmenu
 set wildmode=full
 filetype plugin indent on
 autocmd Rc BufWinEnter * set mouse=
-set clipboard=unnamed
+set clipboard=unnamedplus
 
 "" space setting
 " ---------
@@ -127,7 +127,7 @@ set cursorline
 set inccommand=nosplit
 set number              " Show line numbers
 set relativenumber
-set shortmess=a
+"set shortmess=a
 set showcmd
 set showmode
 set list                " Show hidden characters
