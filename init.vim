@@ -94,7 +94,6 @@ set clipboard=unnamed
 
 "" space setting
 " ---------
-set textwidth=80    " Text width maximum chars before wrapping
 set expandtab       " expand tabs to spaces.
 set tabstop=4       " The number of spaces a tab is
 set softtabstop=4   " While performing editing operations
