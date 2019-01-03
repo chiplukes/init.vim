@@ -46,10 +46,12 @@ Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
 Plug 'itchyny/lightline.vim'
 Plug 'junegunn/vim-easy-align'
-Plug 'scrooloose/nerdtree'
+Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'mhinz/vim-signify'
 Plug 'davidhalter/jedi-vim', { 'for':  'python' }
 Plug 'cocopon/iceberg.vim'
+Plug 'w0rp/ale'
+Plug 'lifepillar/vim-cheat40'
 if has('nvim')
   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 else
@@ -59,6 +61,14 @@ else
 endif
 let g:deoplete#enable_at_startup = 1
 let g:deoplete#_python_version_check = 1
+
+" Linux only stuff
+if !(has('win32') || has('win64'))
+  " FZF already installed manually, could also use vim-plug to install
+  Plug '~/.fzf'
+  Plug 'lambdalisue/vim-pyenv'
+endif
+
 call plug#end()
 
 
@@ -164,7 +174,7 @@ augroup END " }}}
 nnoremap <CR> za
 
 " Focus the current fold by closing all others
-nnoremap <S-Return> zMza
+nnoremap <z-Return> zMza
 
 " Improve scroll, credits: https://github.com/Shougo
 nnoremap <expr> zz (winline() == (winheight(0)+1) / 2) ?
@@ -316,6 +326,10 @@ nmap ga <Plug>(EasyAlign)
 
 "" lightline
 let g:lightline = { 'colorscheme': 'iceberg' }
+
+
+"" vim-cheat40
+let g:cheat40_use_default = 1
 
 "" colorscheme
 colorscheme iceberg
