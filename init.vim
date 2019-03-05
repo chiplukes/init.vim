@@ -32,8 +32,15 @@ if (has('win32') || has('win64'))
   endif
 
 else
-  " made a virtual environment per :help provider-python
-  let g:python3_host_prog=expand('~/.pyenv/versions/py3neovim/bin/python')
+  " Assume some flavor of Linux
+  " check if termux
+  if isdirectory('/data/data/com.termux')
+  	" made a virtual environment per :help provider-python
+  	let g:python3_host_prog=expand('/data/data/com.termux/files/usr/bin/python')
+  else
+   	" made a virtual environment per :help provider-python
+  	let g:python3_host_prog=expand('~/.pyenv/versions/py3neovim/bin/python')
+  endif
 
 endif
 
