@@ -338,7 +338,7 @@ let g:lightline = { 'colorscheme': 'iceberg' }
 let g:cheat40_use_default = 1
 
 "" colorscheme
-colorscheme iceberg
+colorscheme jellybeans
 
 highlight Normal      ctermbg=none
 highlight NonText     ctermbg=none
