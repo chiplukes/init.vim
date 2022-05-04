@@ -331,14 +331,14 @@ xmap ga <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
 
 "" lightline
-let g:lightline = { 'colorscheme': 'iceberg' }
+let g:lightline = { 'colorscheme': 'jellybeans' }
 
 
 "" vim-cheat40
 let g:cheat40_use_default = 1
 
 "" colorscheme
-colorscheme jellybeans
+colorscheme peachpuff
 
 highlight Normal      ctermbg=none
 highlight NonText     ctermbg=none
