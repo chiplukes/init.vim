@@ -39,7 +39,7 @@ else
   	let g:python3_host_prog=expand('/data/data/com.termux/files/usr/bin/python')
   else
    	" made a virtual environment per :help provider-python
-  	let g:python3_host_prog=expand('~/.pyenv/versions/py3neovim/bin/python')
+  	let g:python3_host_prog=expand('~/.config/nvim/.venv/bin/python')
   endif
 
 endif
@@ -73,7 +73,7 @@ let g:deoplete#_python_version_check = 1
 if !(has('win32') || has('win64'))
   " FZF already installed manually, could also use vim-plug to install
   Plug '~/.fzf'
-  Plug 'lambdalisue/vim-pyenv'
+  " Plug 'lambdalisue/vim-pyenv'
 endif
 
 call plug#end()
@@ -320,7 +320,8 @@ nnoremap ;aF   :NERDTreeFind<CR
 nmap s <Plug>(easymotion-s2)
 
 "" deoplete
-let g:deoplete#auto_complete_start_length = 1
+call deoplete#custom#option("min_pattern_length", 1)
+" let g:deoplete#auto_complete_start_length = 1
 inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 inoremap <expr><s-tab> pumvisible() ? "\<c-p>" : "\<s-tab>"
 
